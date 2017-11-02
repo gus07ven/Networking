@@ -3,7 +3,7 @@ import json
 import base64
 import os
 
-servers = [{'name': 'Azure', 'ip': '40.74.226.49', 'port': 2832},
+servers = [{'name': 'Azure', 'ip': '13.65.151.216', 'port': 2832},
            {'name': 'AWS', 'ip': '18.221.224.159', 'port': 2830},
            {'name': 'Google', 'ip': '104.199.113.30', 'port': 2828}
            ]
@@ -14,9 +14,9 @@ serverName = 'Google'
 def distributeContent(file):
     for server in servers:
         if server.get('name') != serverName:
-            clientSocket = socket.socket()  # Create a socket object
-            host2 = server.get('ip')     # Get local machine name
-            port2 = server.get('port')                  # Reserve a port for your service
+            clientSocket = socket.socket()
+            host2 = server.get('ip')
+            port2 = server.get('port')
 
             clientSocket.connect((host2, port2))
             print clientSocket.send(file)
@@ -26,8 +26,8 @@ def distributeContent(file):
 
 # Accept file upload from upload.py
 serverSocket = socket.socket()
-host = socket.gethostname()    #socket.gethostname() '104.199.113.30'
-port = 12345    #12345   2828
+host = '104.199.113.30'    #socket.gethostname() '104.199.113.30'
+port = 2828    #12345   2828
 serverSocket.bind((host, port))
 serverSocket.listen(5)
 print 'Server is running...'
