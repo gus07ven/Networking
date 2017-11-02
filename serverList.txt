@@ -1,0 +1,34 @@
+{
+    "servers": [
+        {
+            "ip": 1234,
+            "name": "Azure",
+            "port": 555
+        },
+        {
+            "ip": 5555,
+            "name": "Google",
+            "port": 8844
+        },
+        {
+            "ip": 9876,
+            "name": "Oracle Cloud",
+            "port": 8989
+        },
+        {
+            "ip": 1212,
+            "name": "Gustavos Cloud",
+            "port": 7777
+        },
+        {
+            "ip": 3434,
+            "name": "Manuels Cloud",
+            "port": 5858
+        },
+        {
+            "ip": 3434,
+            "name": "Gustavo",
+            "port": 5858
+        },
+    ]
+}
