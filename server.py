@@ -5,7 +5,7 @@ import os
 
 servers = [{'name': 'Azure', 'ip': '13.65.151.216', 'port': 2832},
            {'name': 'AWS', 'ip': '18.221.224.159', 'port': 2830},
-           {'name': 'Google', 'ip': '104.199.113.30', 'port': 2828}
+           {'name': 'Google', 'ip': '104.199.113.30', 'port': 3828}
            ]
 
 serverName = 'Google'
@@ -26,8 +26,8 @@ def distributeContent(file):
 
 # Accept file upload from upload.py
 serverSocket = socket.socket()
-host = '104.199.113.30'    #socket.gethostname() '104.199.113.30'
-port = 2828    #12345   2828
+host = ''    #socket.gethostname() '104.199.113.30'
+port = 3828    #12345   2828
 serverSocket.bind((host, port))
 serverSocket.listen(5)
 print 'Server is running...'

@@ -2,22 +2,27 @@ from flask import Flask, jsonify, request, os
 app = Flask(__name__)
 
 
-servers = [{'provider': 'Azure', 'ip': '40.74.226.49', 'port': 2832},
-           {'provider': 'AWS', 'ip': '18.221.224.159', 'port': 2830},
-           {'provider': 'Google', 'ip': '104.199.113.30', 'port': 2828}
+servers = [{'provider': 'Azure', 'ip': '40.74.226.49', 'port': 2832, 'rtt': 1000},
+           {'provider': 'AWS', 'ip': '18.221.224.159', 'port': 2830, 'rtt': 1000},
+           {'provider': 'Google', 'ip': '104.199.113.30', 'port': 3828, 'rtt': 1000}
            ]
 
 
 # Old reliable
 @app.route('/')
 def rely():
-    return 'I know old reliable always works'
+    return 'The server API endpoints are: ' \
+           '/servers :  GET list of all providers' \
+           '/servers/<string:provider> : GET information for a specific provider' \
+           '/server : POST or add a new server' \
+           '/server/<string:provider> : PUT or update an existing server' \
+           '/server/<string:provider> : DELETE an existing provider'
 
 
 # Get all servers
 @app.route('/servers', methods=['GET'])
 def getAllServers():
-    return jsonify({'servers': servers})
+    return jsonify({servers})
 
 
 # Get one server
@@ -32,7 +37,7 @@ def getOneServer(provider):
 def addOneServer():
     server = {'name': request.json['provider'], 'ip': request.json['ip'], 'port': request.json['port']}
     servers.append(server)
-    return jsonify({'servers': servers})
+    return jsonify({servers})
 
 
 # Update one server
@@ -40,7 +45,7 @@ def addOneServer():
 def editOneServer(provider):
     serv = [server for server in servers if server['provider'] == provider]
     serv[0]['provider'] = request.json['provider']
-    return jsonify({'server': serv[0]})
+    return jsonify({serv[0]})
 
 
 # Delete one server

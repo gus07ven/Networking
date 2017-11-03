@@ -2,7 +2,6 @@ import requests, sys, click
 from flask import Flask, g
 app = Flask(__name__)
 
-g = sys.argv[2]
 
 @app.route('/<string:filename>', methods=['GET'])
 def getFileFromServer(filename):

@@ -10,13 +10,18 @@ serverPrices = [{'provider': 'Azure', 'network hourly cost': '.75', 'server hour
 # Old reliable
 @app.route('/')
 def rely():
-    return 'I know old reliable will give me my costs'
+    return 'Pricing info API endpoints are: ' \
+           '/cost :  GET cost for all providers' \
+           '/cost/<string:provider> : GET cost for a specific provider' \
+           '/addcost : POST a new server with its costs' \
+           '/cost/<string:provider> : PUT or update an existing server' \
+           '/cost/<string:provider> : DELETE an existing provider'
 
 
 # Get cost for all servers
 @app.route('/costs', methods=['GET'])
 def getAllPrices():
-    return jsonify({serverPrices})
+    return jsonify(serverPrices)
 
 
 # Get price for one server
